@@ -9,8 +9,8 @@ locals {
 
   custom_rdp_properties = join(";",
     flatten([
+      var.aad_joined_allow_access_from_nonjoined ? ["targetisaadjoined:i:1"] : [""],
       var.custom_rdp_properties,
-      var.aad_joined_allow_access_from_nonjoined ? ["targetisaadjoined:i:1"] : [""]
     ])
   )
 
