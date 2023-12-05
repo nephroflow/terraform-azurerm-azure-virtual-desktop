@@ -96,7 +96,7 @@ resource "azurerm_virtual_machine_extension" "hostpool_join" {
     configurationFunction = "Configuration.ps1\\AddSessionHost"
     properties = {
       hostPoolName          = azurerm_virtual_desktop_host_pool.main.name
-      registrationInfoToken = azurerm_virtual_desktop_host_pool_registration_info.main.token
+      registrationInfoToken = azurerm_virtual_desktop_host_pool_registration_info.main[0].token
       aadJoin               = true
       aadJoinPreview        = false
     }
