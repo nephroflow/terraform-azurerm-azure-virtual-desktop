@@ -50,8 +50,8 @@ resource "time_static" "registration_token_expiration" {
 }
 
 resource "azurerm_virtual_desktop_host_pool_registration_info" "main" {
-  # # This resource will only be created if the time_static is less than 24 hours from now
-  # count           = timecmp(time_static.registration_token_expiration.rfc3339, timeadd(timestamp(), "-24h")) < 0 ? 0 : 1
+  # This resource will only be created if the time_static is less than 24 hours from now
+  count           = timecmp(time_static.registration_token_expiration.rfc3339, timeadd(timestamp(), "-24h")) < 0 ? 0 : 1
   hostpool_id     = azurerm_virtual_desktop_host_pool.main.id
   expiration_date = timeadd(time_static.registration_token_expiration.rfc3339, "24h")
 }
