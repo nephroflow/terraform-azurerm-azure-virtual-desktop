@@ -21,11 +21,11 @@ locals {
 
   avd_users_object_ids = toset(flatten([
     var.avd_users_object_ids,
-    data.azuread_users.users.object_ids
+    # data.azuread_users.users.object_ids
   ]))
 
   avd_admins_object_ids = toset(flatten([
     var.avd_admins_object_ids,
-    data.azuread_users.admins.object_ids
+    # data.azuread_users.admins.object_ids
   ]))
 }
