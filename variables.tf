@@ -8,6 +8,11 @@ variable "resource_group_name" {
   description = "The name of the resource group in which to deploy the AVD-resources."
 }
 
+variable "resource_group_id" {
+  type        = string
+  description = "The ID of the resource group in which to deploy the AVD-resources."
+}
+
 variable "data_location" {
   type        = string
   description = "The location to which metadata-resources will be deployed. This includes the host-pool, application group and workspace. Location of the virtual machines is defined by var.host_location. See [Data locations for Azure Virtual Desktop](https://docs.microsoft.com/en-us/azure/virtual-desktop/data-locations)."

@@ -16,14 +16,14 @@ data "azuread_service_principal" "avd" {
 
 resource "azurerm_role_assignment" "users" {
   for_each             = local.avd_users_object_ids
-  scope                = local.resource_group_id
+  scope                = var.resource_group_id
   role_definition_name = "Virtual Machine User Login"
   principal_id         = each.value
 }
 
 resource "azurerm_role_assignment" "admins" {
   for_each             = local.avd_admins_object_ids
-  scope                = local.resource_group_id
+  scope                = var.resource_group_id
   role_definition_name = "Virtual Machine Administrator Login"
   principal_id         = each.value
 }
@@ -39,5 +39,5 @@ resource "azurerm_role_assignment" "start_on_connect" {
   count                = var.start_vm_on_connect == true ? 1 : 0
   role_definition_name = "Desktop Virtualization Power On Contributor"
   principal_id         = data.azuread_service_principal.avd.object_id
-  scope                = local.resource_group_id
+  scope                = var.resource_group_id
 }
