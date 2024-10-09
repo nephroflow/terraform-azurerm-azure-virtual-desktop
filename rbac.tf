@@ -11,7 +11,7 @@ data "azuread_users" "admins" {
 # But its application ID will always be the one below, see:
 # https://learn.microsoft.com/en-us/azure/virtual-desktop/start-virtual-machine-connect?tabs=azure-portal
 data "azuread_service_principal" "avd" {
-  application_id = "9cdead84-a844-4324-93f2-b2e6bb768d07"
+  client_id = "9cdead84-a844-4324-93f2-b2e6bb768d07"
 }
 
 resource "azurerm_role_assignment" "users" {
